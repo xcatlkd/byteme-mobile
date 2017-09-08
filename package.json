@@ -5,6 +5,9 @@
   "author": null,
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "exp start"
+  },
   "dependencies": {
     "expo": "^20.0.0",
     "react": "16.0.0-alpha.12",
