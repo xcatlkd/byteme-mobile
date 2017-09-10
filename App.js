@@ -1,31 +1,33 @@
 import React from 'react';
+import { TabNavigator, Screen } from 'react-navigation';
+import Insert from './components/insert.js';
 // import ReactNative from 'react-native';
 
 import {
   StyleSheet,
+  Image,
+  ImageBackground,
   Text,
   View,
   TouchableHighlight,
    } from 'react-native';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <TouchableHighlight>
-          <Text>Touch Me!</Text>
-        </TouchableHighlight>
-      </View>
-    );
-  }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+
+
+export default TabNavigator({
+  Home: {
+      screen: Insert,
+    },
+  Poop: {
+    screen: Insert
+  }
   },
-});
+  {
+    tabBarPosition: 'bottom',
+    animationEnabled: true,
+    tabBarOptions: {
+      activeTintColor: '#666',
+    },
+  }
+);
