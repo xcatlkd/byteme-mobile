@@ -19,10 +19,14 @@ export default TabNavigator({
   Home: {
       screen: Insert,
     },
-  Poop: {
-    screen: Insert
-  }
+  SignUp: {
+    screen: Insert,
   },
+  Login: {
+    screen: Insert,
+  },
+  },
+
   {
     tabBarPosition: 'bottom',
     animationEnabled: true,
