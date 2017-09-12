@@ -1,9 +1,11 @@
 import React from 'react';
 import {Image, View, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
-import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
 import Photos from '../json/test.json';
 
 
+
+=======
+import Photos from '../json/test.json';
 
 export default class Photo extends React.Component {
 	constructor (props) {
@@ -14,12 +16,14 @@ export default class Photo extends React.Component {
 	return(
 		<ScrollView style={styles.container}>
 			{Photos.map(function(pic){
+
 				return
 				<Text source={{
 					uri: pic.name
 				}}
 			/>
 				<Image source={{
+				return <Image source={{
 					uri: pic.imageURL
 				}}
 				 style={{width: 200, height: 200}}
