@@ -1,6 +1,8 @@
 import React from 'react';
 import { TabNavigator, Screen } from 'react-navigation';
 import Insert from './components/insert.js';
+import SignUp from './components/signup.js';
+import Photo from './components/photo.js';
 // import ReactNative from 'react-native';
 
 import {
@@ -13,16 +15,18 @@ import {
    } from 'react-native';
 
 
-
-
 export default TabNavigator({
   Home: {
       screen: Insert,
     },
-  Poop: {
-    screen: Insert
-  }
+  SignUp: {
+    screen: SignUp,
   },
+  Photo: {
+    screen: Photo,
+  },
+  },
+
   {
     tabBarPosition: 'bottom',
     animationEnabled: true,
