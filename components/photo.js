@@ -1,5 +1,6 @@
 import React from 'react';
-import {Image, View, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
+import {Image, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
+import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body } from 'native-base';
 import Photos from '../json/test.json';
 
 export default class Photo extends React.Component {
@@ -8,21 +9,43 @@ export default class Photo extends React.Component {
 	}
 	render() {
 		console.log(Photos);
-	return(
-		<ScrollView style={styles.container}>
-			{Photos.map(function(pic){
-				return <Image source={{
-					uri: pic.imageURL
-				}}
-				 style={{width: 200, height: 200}}
-			/>
-			})}
-		</ScrollView>
+	return (
+		// <ScrollView style={styles.container}>
+				<Container>
+					{/* <Header /> */}
+					<View>
+						<DeckSwiper
+							dataSource={Photos}
+							renderItem={photo => {
+								return (
+									<Card style={{ elevation: 3 }}>
+										<CardItem>
+											<Left>
+												<Body>
+													<Text>
+														{ photo.name }
+													</Text>
+												</Body>
+											</Left>
+										</CardItem>
+										<CardItem cardBody>
+											<Image style={{ height: 300, flex: 1 }} source= {{ uri: photo.imageURL}} />
+										</CardItem>
+										<CardItem>
+											<Text>
+												{ photo.name }
+											</Text>
+										</CardItem>
+									</Card>
+								);
+						}}
+						/>
+		 				</View>
+		 			</Container>
 		// <TouchableHighlight>
 		// 	<Text>Touch Me!</Text>
 		// </TouchableHighlight>
 	)
-
 	}
 };
 
@@ -34,9 +57,4 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
 
   },
-	// Image: {
-	// 	height: 280,
-	// 	width: 100,
-	//
-	// }
 });

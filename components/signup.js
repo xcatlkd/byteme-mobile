@@ -6,7 +6,8 @@ export default class SignUp extends React.Component {
 	return(
 	<View style={styles.container}>
 		<TextInput
-			placeholder="Name"
+			placeholder="username or email"
+			placeholderTextColor="rgba(0, 255, 0, 0.4);"
 			style={styles.input}
 		/>
 	</View>
