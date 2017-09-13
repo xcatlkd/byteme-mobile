@@ -16,12 +16,12 @@ import {
 
 
 export default TabNavigator({
-  Home: {
-      screen: Insert,
-    },
-  SignUp: {
-    screen: SignUp,
-  },
+  // Home: {
+  //     screen: Insert,
+  //   },
+  // SignUp: {
+  //   screen: SignUp,
+  // },
   Photo: {
     screen: Photo,
   },

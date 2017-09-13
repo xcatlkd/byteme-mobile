@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
-import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body } from 'native-base';
+import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body, Thumbnail } from 'native-base';
 import Photos from '../json/test.json';
 
 export default class Photo extends React.Component {
@@ -13,7 +13,7 @@ export default class Photo extends React.Component {
 		// <ScrollView style={styles.container}>
 				<Container>
 					{/* <Header /> */}
-					<View>
+					<View style={styles.photoContainer}>
 						<DeckSwiper
 							dataSource={Photos}
 							renderItem={photo => {
@@ -21,10 +21,12 @@ export default class Photo extends React.Component {
 									<Card style={{ elevation: 3 }}>
 										<CardItem>
 											<Left>
+												<Thumbnail source={{ uri: photo.imageURL}}/>
 												<Body>
 													<Text>
 														{ photo.name }
 													</Text>
+													<Text note>Byte Me</Text>
 												</Body>
 											</Left>
 										</CardItem>
@@ -52,9 +54,17 @@ export default class Photo extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+		marginTop: 150,
     backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
 
   },
+
+	photoContainer: {
+		// alignItems: 'center',
+		// flexGrow: 1,
+		// justifyContent: 'center',
+		paddingTop: 100,
+	}
 });
