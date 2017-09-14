@@ -1,12 +1,33 @@
 import React from 'react';
 import {Image, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
 import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body, Thumbnail, Button, Icon } from 'native-base';
+
 import Photos from '../json/test.json';
 
 export default class Photo extends React.Component {
 	constructor (props) {
 		super(props);
+		isLoading: true,
+		dataSource: Photos,
 	}
+  componentDidMount() {
+    return fetch('https://desolate-anchorage-50545.herokuapp.com/api/posts')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        this.setState({
+          isLoading: false,
+          dataSource: ds.cloneWithRows(responseJson.movies),
+        }, function() {
+          // do something with new state
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+
 	render() {
 		console.log(Photos);
 
