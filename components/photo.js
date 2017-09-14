@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
-import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body, Thumbnail } from 'native-base';
+import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body, Thumbnail, Button, Icon } from 'native-base';
 import Photos from '../json/test.json';
 
 export default class Photo extends React.Component {
@@ -9,13 +9,20 @@ export default class Photo extends React.Component {
 	}
 	render() {
 		console.log(Photos);
+
 	return (
 		// <ScrollView style={styles.container}>
 				<Container>
 					{/* <Header /> */}
 					<View style={styles.photoContainer}>
 						<DeckSwiper
+							ref={(c) => this._deckSwiper = c }
 							dataSource={Photos}
+							renderEmpty={() =>
+							 <View style={{ alignSelf: "center" }}>
+								<Text style={styles.noPhotoText}>NO MORE PHOTOS</Text>
+							</View>
+						}
 							renderItem={photo => {
 								return (
 									<Card style={{ elevation: 3 }}>
@@ -43,11 +50,21 @@ export default class Photo extends React.Component {
 						}}
 						/>
 		 				</View>
+						{/* <View style={{ flexDirection: "row", flex: 1, position: "absolute", bottom: 50, left: 0, right: 0, justifyContent: 'space-between', padding: 15 }}>
+          <Button iconLeft onPress={() => this._deckSwiper._root.swipeLeft()}>
+            <Icon name="arrow-back" />
+            <Text>Swipe Left</Text>
+          </Button>
+          <Button iconRight onPress={() => this._deckSwiper._root.swipeRight()}>
+            <Icon name="arrow-forward" />
+            <Text>Swipe Right</Text>
+          </Button>
+        </View> */}
 		 			</Container>
 		// <TouchableHighlight>
 		// 	<Text>Touch Me!</Text>
 		// </TouchableHighlight>
-	)
+		)
 	}
 };
 
@@ -66,5 +83,9 @@ const styles = StyleSheet.create({
 		// flexGrow: 1,
 		// justifyContent: 'center',
 		paddingTop: 100,
+	},
+	noPhotoText: {
+		fontWeight: 'bold',
+		fontSize: 20,
 	}
 });
