@@ -30,10 +30,10 @@ export default class Photo extends React.Component {
 											<Left>
 												<Thumbnail source={{ uri: photo.imageURL}}/>
 												<Body>
-													<Text>
+													<Text style={styles.title}>
 														{ photo.name }
 													</Text>
-													<Text note>Byte Me</Text>
+													<Text note={styles.note}>Byte Me</Text>
 												</Body>
 											</Left>
 										</CardItem>
@@ -87,5 +87,11 @@ const styles = StyleSheet.create({
 	noPhotoText: {
 		fontWeight: 'bold',
 		fontSize: 20,
+	},
+	title: {
+		fontWeight: 'bold',
+	},
+	note: {
+		color: '#d3d3d3',
 	}
 });
