@@ -1,77 +1,97 @@
 import React from 'react';
-import {Image, View, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
-import Photos from '../json/test.json';
-=======
+import {Image, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
+import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body, Thumbnail, Button, Icon } from 'native-base';
 import Photos from '../json/test.json';
 
->>>>>>> 725b35eb769466ea368e32c00780e13915de0d12
-
-
-=======
-import Photos from '../json/test.json';
-
-<<<<<<< HEAD
-=======
-import Photos from '../json/test.json';
-
->>>>>>> 5cfa4e46acb1340864231d6dba0c13252eacabd4
-=======
->>>>>>> 725b35eb769466ea368e32c00780e13915de0d12
 export default class Photo extends React.Component {
 	constructor (props) {
 		super(props);
 	}
 	render() {
 		console.log(Photos);
-	return(
-		<ScrollView style={styles.container}>
-			{Photos.map(function(pic){
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> 725b35eb769466ea368e32c00780e13915de0d12
-				return
-				<Text source={{
-					uri: pic.name
-				}}
-			/>
-				<Image source={{
-<<<<<<< HEAD
-=======
-				return <Image source={{
->>>>>>> 5cfa4e46acb1340864231d6dba0c13252eacabd4
-=======
-				return <Image source={{
->>>>>>> 725b35eb769466ea368e32c00780e13915de0d12
-					uri: pic.imageURL
-				}}
-				 style={{width: 200, height: 200}}
-			/>
-			})}
-		</ScrollView>
+	return (
+		// <ScrollView style={styles.container}>
+				<Container>
+					{/* <Header /> */}
+					<View style={styles.photoContainer}>
+						<DeckSwiper
+							ref={(c) => this._deckSwiper = c }
+							dataSource={Photos}
+							renderEmpty={() =>
+							 <View style={{ alignSelf: "center" }}>
+								<Text style={styles.noPhotoText}>NO MORE PHOTOS</Text>
+							</View>
+						}
+							renderItem={photo => {
+								return (
+									<Card style={{ elevation: 3 }}>
+										<CardItem>
+											<Left>
+												<Thumbnail source={{ uri: photo.imageURL}}/>
+												<Body>
+													<Text style={styles.title}>
+														{ photo.name }
+													</Text>
+													<Text note={styles.note}>Byte Me</Text>
+												</Body>
+											</Left>
+										</CardItem>
+										<CardItem cardBody>
+											<Image style={{ height: 300, flex: 1 }} source= {{ uri: photo.imageURL}} />
+										</CardItem>
+										<CardItem>
+											<Text>
+												{ photo.name }
+											</Text>
+										</CardItem>
+									</Card>
+								);
+						}}
+						/>
+		 				</View>
+						{/* <View style={{ flexDirection: "row", flex: 1, position: "absolute", bottom: 50, left: 0, right: 0, justifyContent: 'space-between', padding: 15 }}>
+          <Button iconLeft onPress={() => this._deckSwiper._root.swipeLeft()}>
+            <Icon name="arrow-back" />
+            <Text>Swipe Left</Text>
+          </Button>
+          <Button iconRight onPress={() => this._deckSwiper._root.swipeRight()}>
+            <Icon name="arrow-forward" />
+            <Text>Swipe Right</Text>
+          </Button>
+        </View> */}
+		 			</Container>
 		// <TouchableHighlight>
 		// 	<Text>Touch Me!</Text>
 		// </TouchableHighlight>
-	)
-
+		)
 	}
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+		marginTop: 150,
     backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
 
   },
-	// Image: {
-	// 	height: 280,
-	// 	width: 100,
-	//
-	// }
+
+	photoContainer: {
+		// alignItems: 'center',
+		// flexGrow: 1,
+		// justifyContent: 'center',
+		paddingTop: 100,
+	},
+	noPhotoText: {
+		fontWeight: 'bold',
+		fontSize: 20,
+	},
+	title: {
+		fontWeight: 'bold',
+	},
+	note: {
+		color: '#d3d3d3',
+	}
 });
