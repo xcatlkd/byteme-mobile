@@ -31,8 +31,8 @@ export default class Photo extends React.Component {
 		this._fetchPhotos();
 	}
 	render() {
-		console.log(this.state.images);
 		const { images } = this.state;
+		console.log(images);
 	return (
 		// <ScrollView style={styles.container}>
 				<Container>
@@ -54,7 +54,7 @@ export default class Photo extends React.Component {
 												<Thumbnail source={{ uri: 'https://s3.us-east-2.amazonaws.com/bytemeimagestorage/' + photo.id}}/>
 												<Body>
 													<Text style={styles.title}>
-														{ photo.name }
+														{ photo.title }
 													</Text>
 													<Text note={styles.note}>Byte Me</Text>
 												</Body>
@@ -66,7 +66,7 @@ export default class Photo extends React.Component {
 										</CardItem>
 										<CardItem>
 											<Text>
-												{ photo.name }
+												{ photo.title }
 											</Text>
 										</CardItem>
 									</Card>

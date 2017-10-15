@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, View, TextInput, StyleSheet, TouchableOpacity, Text }  from 'react-native';
+import {Image, View, TextInput, StyleSheet, TouchableOpacity, Text, KeyboardAvoidingView }  from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 
 export default class SignUp extends React.Component {
@@ -14,25 +14,25 @@ export default class SignUp extends React.Component {
 
 	render() {
 	return(
-	<View style={styles.container}>
+	<KeyboardAvoidingView style={styles.container} behavior="padding">
 		<FormLabel>
 			Username:
 		</FormLabel>
-		<FormInput onChangeText={(text) => this.setState({text})}
-    value={this.state.text}/>
+		<FormInput onChangeText={(username) => this.setState({username})}
+    value={this.state.username}/>
 		<FormValidationMessage>
 			{'This field is required'}
 		</FormValidationMessage>
 		<FormLabel>
 			Password:
-			<FormInput onChangeText={(text) => this.setState({text})}
-			value={this.state.text}/>
-			<FormValidationMessage>
-				{'This field is required'}
-			</FormValidationMessage>
 		</FormLabel>
+		<FormInput onChangeText={(password) => this.setState({password})}
+		value={this.state.password}/>
+		<FormValidationMessage>
+			{'This field is required'}
+		</FormValidationMessage>
 		{/* %%%% Fix the display on forms and work out functionality %%%% */}
-	</View>
+	</KeyboardAvoidingView>
 	)
 
 	}
