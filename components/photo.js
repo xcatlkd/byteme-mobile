@@ -26,6 +26,7 @@ export default class Photo extends React.Component {
 			console.error(error);
 		})
 	}
+<<<<<<< HEAD
 
 	componentDidMount() {
 		this._fetchPhotos();
@@ -33,6 +34,11 @@ export default class Photo extends React.Component {
 	render() {
 		console.log(this.state.images);
 		const { images } = this.state;
+=======
+	render() {
+		console.log(Photos);
+
+>>>>>>> origin/development-signup
 	return (
 		// <ScrollView style={styles.container}>
 				<Container>
@@ -40,7 +46,11 @@ export default class Photo extends React.Component {
 					<View style={styles.photoContainer}>
 						<DeckSwiper
 							ref={(c) => this._deckSwiper = c }
+<<<<<<< HEAD
 							dataSource={images}
+=======
+							dataSource={Photos}
+>>>>>>> origin/development-signup
 							renderEmpty={() =>
 							 <View style={{ alignSelf: "center" }}>
 								<Text style={styles.noPhotoText}>NO MORE PHOTOS</Text>
@@ -51,7 +61,11 @@ export default class Photo extends React.Component {
 									<Card style={{ elevation: 3 }}>
 										<CardItem>
 											<Left>
+<<<<<<< HEAD
 												<Thumbnail source={{ uri: 'https://s3.us-east-2.amazonaws.com/bytemeimagestorage/' + photo.id}}/>
+=======
+												<Thumbnail source={{ uri: photo.imageURL}}/>
+>>>>>>> origin/development-signup
 												<Body>
 													<Text style={styles.title}>
 														{ photo.name }
@@ -61,7 +75,11 @@ export default class Photo extends React.Component {
 											</Left>
 										</CardItem>
 										<CardItem cardBody>
+<<<<<<< HEAD
 											<Image style={{ height: 300, flex: 1 }} source= {{ uri: 'https://s3.us-east-2.amazonaws.com/bytemeimagestorage/' + photo.id}} />
+=======
+											<Image style={{ height: 300, flex: 1 }} source= {{ uri: photo.imageURL}} />
+>>>>>>> origin/development-signup
 										</CardItem>
 										<CardItem>
 											<Text>
