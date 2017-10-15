@@ -15,13 +15,6 @@ export default class SignUp extends React.Component {
 	render() {
 	return(
 	<View style={styles.container}>
-<<<<<<< HEAD
-		<TextInput
-			placeholder="username or email"
-			placeholderTextColor="rgba(0, 255, 0, 0.4);"
-			style={styles.input}
-		/>
-=======
 		<FormLabel>
 			Username:
 		</FormLabel>
@@ -39,7 +32,6 @@ export default class SignUp extends React.Component {
 			</FormValidationMessage>
 		</FormLabel>
 		{/* %%%% Fix the display on forms and work out functionality %%%% */}
->>>>>>> origin/development-signup
 	</View>
 	)
 
