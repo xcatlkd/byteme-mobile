@@ -26,8 +26,6 @@ export default class Photo extends Component {
 		})
 		.then(() => {
 			console.log("_fetch   state: ", this.state);
-			const filePath = "https://s3.us-east-2.amazonaws.com/bytemeimagestorage/"
-			console.log("photo component     render;  filePath + this.state.images[3].id: ", `${filePath}${this.state.images[3].id}`);
 		})
 		.catch((error) => {
 			console.error(error);
@@ -40,7 +38,6 @@ export default class Photo extends Component {
 	render() {
 		const { images } = this.state;
 		const filePath = "https://s3.us-east-2.amazonaws.com/bytemeimagestorage/"
-		console.log("photo component     render;  this.state.images", images);
 		return (
 			<Container>
 				{/* <Header /> */}
@@ -54,7 +51,7 @@ export default class Photo extends Component {
 								<Card style={{ elevation: 3 }}>
 									<CardItem>
 										<Left>
-											<Thumbnail source={`${filePath}${photo.id}`}/>
+											<Thumbnail source={{ uri: `${filePath}${photo.id}` }}/>
 											<Body>
 												<Text style={styles.title}>
 													{ photo.title }
@@ -64,7 +61,7 @@ export default class Photo extends Component {
 										</Left>
 									</CardItem>
 									<CardItem cardBody>
-										<Image style={{ height: 300, flex: 1 }} source={`${filePath}${photo.id}`} />
+										<Image style={{ height: 300, flex: 1 }} source={{ uri: `${filePath}${photo.id}` }} />
 
 									</CardItem>
 									<CardItem>
