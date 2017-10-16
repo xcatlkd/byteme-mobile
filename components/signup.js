@@ -1,8 +1,20 @@
 import React from 'react';
-import {Image, View, TextInput, StyleSheet, TouchableOpacity, Text }  from 'react-native';
-import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import {
+				StyleSheet,
+				TouchableOpacity,
+				Text,
+			 	Image, }  from 'react-native';
+
+import { Button,
+				 Container,
+				 Content,
+				 Form,
+				 Item,
+				 Input,
+				 Toast } from "native-base";
 
 export default class SignUp extends React.Component {
+
 	constructor(props) {
 		super(props); {
 			this.state = {
@@ -14,49 +26,56 @@ export default class SignUp extends React.Component {
 
 	render() {
 	return(
-	<View style={styles.container}>
-		<FormLabel>
-			Username:
-		</FormLabel>
-		<FormInput onChangeText={(text) => this.setState({text})}
-    value={this.state.text}/>
-		<FormValidationMessage>
-			{'This field is required'}
-		</FormValidationMessage>
-		<FormLabel>
-			Password:
-			<FormInput onChangeText={(text) => this.setState({text})}
-			value={this.state.text}/>
-			<FormValidationMessage>
-				{'This field is required'}
-			</FormValidationMessage>
-		</FormLabel>
-		{/* %%%% Fix the display on forms and work out functionality %%%% */}
-	</View>
-	)
+	<Container style={styles.container}>
 
+		<Form style={styles.form}>
+			<Item underline>
+				<Input
+					onChangeText={username => this.setState({ username })}
+					placeholder="Username"
+				/>
+			</Item>
+			<Item underline>
+				<Input
+					secureTextEntry
+					onChangeText={password => this.setState({ password })}
+					placeholder="Password"
+				/>
+			</Item>
+			<Button style={styles.button}>
+				<Text>Sign Up</Text>
+			</Button>
+		</Form>
+
+		<Image
+			style={styles.logo}
+			source={{uri: 'https://imgur.com/NL5irJA'}}
+		/>
+	</Container>
+		)
 	}
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+	container: {
+		flex: 1,
+		backgroundColor: '#7ba428',
+		alignItems: 'center',
+		justifyContent: 'center',
+		padding: 20
+	},
+	form: {
+		paddingRight: 45,
+		paddingLeft: 35,
+		top: -20
+	},
+	button: {
+		marginTop: 25,
+		marginLeft: 15
+	},
 
-	text: {
-		width: 200,
-		height: 400,
+	logo: {
+		width: 66,
+		height: 58,
 	}
-//	^^ Clean this up ^^
-
-	// input: {
-	// 	height:
-	// 	backgroundColor:
-	// 	marginCenter:
-	// 	color:
-	// 	paddingHorizontal:
-	// }
 });
