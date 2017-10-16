@@ -11,7 +11,7 @@ const Insert = (props)=> {
 			<Text>Touch Me!</Text>
 		</TouchableHighlight>
 	</View>
-	</Image>)
+	)
 
 
 };
