@@ -3,7 +3,8 @@ import {
 				StyleSheet,
 				TouchableOpacity,
 				Text,
-			 	Image, }  from 'react-native';
+			 	Image,
+			 	KeyboardAvoidingView }  from 'react-native';
 
 import { Button,
 				 Container,
@@ -12,6 +13,11 @@ import { Button,
 				 Item,
 				 Input,
 				 Toast } from "native-base";
+
+import { FormLabel,
+				 FormInput,
+				 FormValidationMessage } from 'react-native-elements';
+
 
 export default class SignUp extends React.Component {
 
@@ -27,55 +33,66 @@ export default class SignUp extends React.Component {
 	render() {
 	return(
 	<Container style={styles.container}>
+		<KeyboardAvoidingView style={styles.container} behavior="padding">
+			<FormLabel style={styles.form}>
+				Username:
+			</FormLabel>
+			<FormInput style={styles.input} onChangeText={(username) => this.setState({username})}
+	    value={this.state.username}/>
+			<FormValidationMessage style={styles.error}>
+				{'This field is required'}
+			</FormValidationMessage>
+			<FormLabel>
+				Password:
+			</FormLabel>
+			<FormInput style={styles.input} onChangeText={(password) => this.setState({password})}
+			value={this.state.password}/>
+			<FormValidationMessage style={styles.error}>
+				{'This field is required'}
+			</FormValidationMessage>
+		</KeyboardAvoidingView>
 
-		<Form style={styles.form}>
-			<Item underline>
-				<Input
-					onChangeText={username => this.setState({ username })}
-					placeholder="Username"
-				/>
-			</Item>
-			<Item underline>
-				<Input
-					secureTextEntry
-					onChangeText={password => this.setState({ password })}
-					placeholder="Password"
-				/>
-			</Item>
-			<Button style={styles.button}>
-				<Text>Sign Up</Text>
-			</Button>
-		</Form>
+			<Button style={styles.button}><Text>Sign Up</Text></Button>
+</Container>
 
-		<Image
-			style={styles.logo}
-			source={{uri: 'https://imgur.com/NL5irJA'}}
-		/>
-	</Container>
+		// <Image
+		// 	style={styles.logo}
+		// 	source={{uri: 'https://imgur.com/NL5irJA'}}
+		// />
 		)
 	}
 };
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		backgroundColor: '#7ba428',
+		// flex: 1,
+		backgroundColor: '#F0F8FF',
 		alignItems: 'center',
 		justifyContent: 'center',
-		padding: 20
+		// padding: 20
 	},
+
 	form: {
-		paddingRight: 45,
-		paddingLeft: 35,
-		top: -20
+		justifyContent: 'center',
 	},
+
+	input: {
+		width: 225,
+		height: 40,
+	},
+
 	button: {
-		marginTop: 25,
-		marginLeft: 15
+		marginLeft: 150,
+
+	},
+
+	error: {
+		marginBottom: 10,
 	},
 
 	logo: {
 		width: 66,
 		height: 58,
-	}
+	},
+
 });

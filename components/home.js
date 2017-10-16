@@ -11,7 +11,7 @@ const Insert = (props)=> {
 			<Text>Touch Me!</Text>
 		</TouchableHighlight>
 	</View>
-	</Image>)
+	)
 
 
 };
@@ -21,7 +21,7 @@ export default Insert
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: '#fff',
   },
 

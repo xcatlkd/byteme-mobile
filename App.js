@@ -1,6 +1,7 @@
 import React from 'react';
 import { TabNavigator, Screen } from 'react-navigation';
 import Insert from './components/insert.js';
+import Home from './components/home.js';
 import SignUp from './components/signup.js';
 import Photo from './components/photo.js';
 // import ReactNative from 'react-native';
@@ -17,7 +18,7 @@ import {
 
 export default TabNavigator({
   Home: {
-      screen: Insert,
+      screen: Home,
     },
   SignUp: {
     screen: SignUp,

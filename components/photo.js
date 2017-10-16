@@ -1,15 +1,38 @@
 import React from 'react';
 import {Image, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
 import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body, Thumbnail, Button, Icon } from 'native-base';
-import Photos from '../json/test.json';
+// import Photos from '../json/test.json';
 
 export default class Photo extends React.Component {
 	constructor (props) {
 		super(props);
+		this.state = {
+			images: [],
+		}
+	}
+
+	_fetchPhotos = () => {
+		return fetch("https://desolate-anchorage-50545.herokuapp.com/api/posts")
+		// .then((data) => data.JSON())
+		.then((data) => {
+			this.setState({
+				images: JSON.parse(data._bodyText),
+			});
+		})
+		.then(() => {
+			console.log("_fetch   state: ", this.state);
+		})
+		.catch((error) => {
+			console.error(error);
+		})
+	}
+
+	componentDidMount() {
+		this._fetchPhotos();
 	}
 	render() {
-		console.log(Photos);
-
+		const { images } = this.state;
+		console.log(images);
 	return (
 		// <ScrollView style={styles.container}>
 				<Container>
@@ -17,7 +40,7 @@ export default class Photo extends React.Component {
 					<View style={styles.photoContainer}>
 						<DeckSwiper
 							ref={(c) => this._deckSwiper = c }
-							dataSource={Photos}
+							dataSource={images}
 							renderEmpty={() =>
 							 <View style={{ alignSelf: "center" }}>
 								<Text style={styles.noPhotoText}>NO MORE PHOTOS</Text>
@@ -28,21 +51,22 @@ export default class Photo extends React.Component {
 									<Card style={{ elevation: 3 }}>
 										<CardItem>
 											<Left>
-												<Thumbnail source={{ uri: photo.imageURL}}/>
+												<Thumbnail source={{ uri: 'https://s3.us-east-2.amazonaws.com/bytemeimagestorage/' + photo.id}}/>
 												<Body>
 													<Text style={styles.title}>
-														{ photo.name }
+														{ photo.title }
 													</Text>
 													<Text note={styles.note}>Byte Me</Text>
 												</Body>
 											</Left>
 										</CardItem>
 										<CardItem cardBody>
-											<Image style={{ height: 300, flex: 1 }} source= {{ uri: photo.imageURL}} />
+											<Image style={{ height: 300, flex: 1 }} source= {{ uri: 'https://s3.us-east-2.amazonaws.com/bytemeimagestorage/' + photo.id}} />
+
 										</CardItem>
 										<CardItem>
 											<Text>
-												{ photo.name }
+												{ photo.title }
 											</Text>
 										</CardItem>
 									</Card>
