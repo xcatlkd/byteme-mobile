@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 	},
 
 	button: {
-		marginLeft: 150,
+		marginLeft: 145,
 
 	},
 

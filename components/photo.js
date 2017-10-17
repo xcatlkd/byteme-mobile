@@ -20,7 +20,7 @@ export default class Photo extends React.Component {
 			});
 		})
 		.then(() => {
-			console.log("_fetch   state: ", this.state);
+			console.log("_fetch state: ", this.state);
 		})
 		.catch((error) => {
 			console.error(error);
