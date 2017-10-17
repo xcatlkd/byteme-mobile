@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Image, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
 import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body, Thumbnail, Button, Icon } from 'native-base';
 // import Photos from '../json/test.json';
 
-export default class Photo extends React.Component {
+export default class Photo extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			images: [],
+			images: [{
+				title: "Sami!",
+				description: "Null",
+				id: "https://s3.us-east-2.amazonaws.com/bytemeimagestorage/1505352183872",
+
+			}],
 		}
 	}
 
@@ -32,62 +37,54 @@ export default class Photo extends React.Component {
 	}
 	render() {
 		const { images } = this.state;
-		console.log(images);
-	return (
-		// <ScrollView style={styles.container}>
-				<Container>
-					{/* <Header /> */}
-					<View style={styles.photoContainer}>
-						<DeckSwiper
-							ref={(c) => this._deckSwiper = c }
-							dataSource={images}
-							renderEmpty={() =>
-							 <View style={{ alignSelf: "center" }}>
-								<Text style={styles.noPhotoText}>NO MORE PHOTOS</Text>
-							</View>
-						}
-							renderItem={photo => {
-								return (
-									<Card style={{ elevation: 3 }}>
-										<CardItem>
-											<Left>
-												<Thumbnail source={{ uri: 'https://s3.us-east-2.amazonaws.com/bytemeimagestorage/' + photo.id}}/>
-												<Body>
-													<Text style={styles.title}>
-														{ photo.title }
-													</Text>
-													<Text note={styles.note}>Byte Me</Text>
-												</Body>
-											</Left>
-										</CardItem>
-										<CardItem cardBody>
-											<Image style={{ height: 300, flex: 1 }} source= {{ uri: 'https://s3.us-east-2.amazonaws.com/bytemeimagestorage/' + photo.id}} />
+		const filePath = "https://s3.us-east-2.amazonaws.com/bytemeimagestorage/"
+		return (
+			<Container>
+				{/* <Header /> */}
+				<View style={styles.photoContainer}>
+					<DeckSwiper
+						ref={(c) => this._deckSwiper = c }
+						dataSource={images}
 
-										</CardItem>
-										<CardItem>
-											<Text>
-												{ photo.title }
-											</Text>
-										</CardItem>
-									</Card>
-								);
+						renderItem={photo => {
+							return (
+								<Card style={{ elevation: 3 }}>
+									<CardItem>
+										<Left>
+											<Thumbnail source={{ uri: `${filePath}${photo.id}` }}/>
+											<Body>
+												<Text style={styles.title}>
+													{ photo.title }
+												</Text>
+												<Text note={styles.note}>Byte Me</Text>
+											</Body>
+										</Left>
+									</CardItem>
+									<CardItem cardBody>
+										<Image style={{ height: 300, flex: 1 }} source={{ uri: `${filePath}${photo.id}` }} />
+
+									</CardItem>
+									<CardItem>
+										<Text>
+											{ photo.title }
+										</Text>
+									</CardItem>
+								</Card>
+							);
 						}}
-						/>
-		 				</View>
-						{/* <View style={{ flexDirection: "row", flex: 1, position: "absolute", bottom: 50, left: 0, right: 0, justifyContent: 'space-between', padding: 15 }}>
-          <Button iconLeft onPress={() => this._deckSwiper._root.swipeLeft()}>
-            <Icon name="arrow-back" />
-            <Text>Swipe Left</Text>
-          </Button>
-          <Button iconRight onPress={() => this._deckSwiper._root.swipeRight()}>
-            <Icon name="arrow-forward" />
-            <Text>Swipe Right</Text>
-          </Button>
-        </View> */}
-		 			</Container>
-		// <TouchableHighlight>
-		// 	<Text>Touch Me!</Text>
-		// </TouchableHighlight>
+					/>
+	 			</View>
+					{/* <View style={{ flexDirection: "row", flex: 1, position: "absolute", bottom: 50, left: 0, right: 0, justifyContent: 'space-between', padding: 15 }}>
+        <Button iconLeft onPress={() => this._deckSwiper._root.swipeLeft()}>
+          <Icon name="arrow-back" />
+          <Text>Swipe Left</Text>
+        </Button>
+        <Button iconRight onPress={() => this._deckSwiper._root.swipeRight()}>
+          <Icon name="arrow-forward" />
+          <Text>Swipe Right</Text>
+        </Button>
+      </View> */}
+	 		</Container>
 		)
 	}
 };
