@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {Image, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
 import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body, Thumbnail, Button, Icon } from 'native-base';
 // import Photos from '../json/test.json';
 
-export default class Photo extends Component {
+class Photo extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -88,6 +89,14 @@ export default class Photo extends Component {
 		)
 	}
 };
+
+function mapStateToProps(state, props) {
+	return {
+		isLoggedIn: state.users.isLoggedIn,
+	};
+}
+
+export default connect(mapStateToProps, { })(Photo);
 
 const styles = StyleSheet.create({
   container: {

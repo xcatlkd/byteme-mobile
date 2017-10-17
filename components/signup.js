@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
 				StyleSheet,
 				TouchableOpacity,
@@ -18,9 +19,9 @@ import { FormLabel,
 				 FormInput,
 				 FormValidationMessage } from 'react-native-elements';
 
+import { signup } from '../actions/users';
 
-export default class SignUp extends React.Component {
-
+class SignUp extends React.Component {
 	constructor(props) {
 		super(props); {
 			this.state = {
@@ -30,30 +31,36 @@ export default class SignUp extends React.Component {
 		}
 	}
 
-	render() {
-	return(
-	<Container style={styles.container}>
-		<KeyboardAvoidingView style={styles.container} behavior="padding">
-			<FormLabel style={styles.form}>
-				Username:
-			</FormLabel>
-			<FormInput style={styles.input} onChangeText={(username) => this.setState({username})}
-	    value={this.state.username}/>
-			<FormValidationMessage style={styles.error}>
-				{'This field is required'}
-			</FormValidationMessage>
-			<FormLabel>
-				Password:
-			</FormLabel>
-			<FormInput style={styles.input} onChangeText={(password) => this.setState({password})}
-			value={this.state.password}/>
-			<FormValidationMessage style={styles.error}>
-				{'This field is required'}
-			</FormValidationMessage>
-		</KeyboardAvoidingView>
+	_handleSubmit = (event) => {
+		event.preventDefault();
+		console.log("handleSubmit; signup:   this.props: ", this.props)
+		this.props.signup(this.state);
+	}
 
-			<Button style={styles.button}><Text>Sign Up</Text></Button>
-</Container>
+
+	render() {
+		return(
+			<Container style={styles.container}>
+				<KeyboardAvoidingView style={styles.container} behavior="padding">
+					<FormLabel style={styles.form}>
+						Username:
+					</FormLabel>
+					<FormInput style={styles.input} onChangeText={(username) => this.setState({username})}
+			    value={this.state.username}/>
+					<FormValidationMessage style={styles.error}>
+						{'This field is required'}
+					</FormValidationMessage>
+					<FormLabel>
+						Password:
+					</FormLabel>
+					<FormInput style={styles.input} onChangeText={(password) => this.setState({password})}
+					value={this.state.password}/>
+					<FormValidationMessage style={styles.error}>
+						{'This field is required'}
+					</FormValidationMessage>
+					<Button style={styles.button} onPress={this._handleSubmit}><Text>Sign Up</Text></Button>
+				</KeyboardAvoidingView>
+			</Container>
 
 		// <Image
 		// 	style={styles.logo}
@@ -62,6 +69,15 @@ export default class SignUp extends React.Component {
 		)
 	}
 };
+
+function mapStateToProps(state, props) {
+	return {
+		isLoggedIn: state.users.isLoggedIn,
+		error: state.users.error,
+	};
+}
+
+export default connect(mapStateToProps, { signup })(SignUp);
 
 const styles = StyleSheet.create({
 	container: {

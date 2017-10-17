@@ -1,38 +1,25 @@
 import React from 'react';
 import { TabNavigator, Screen } from 'react-navigation';
-import Insert from './components/insert.js';
-import Home from './components/home.js';
-import SignUp from './components/signup.js';
-import Photo from './components/photo.js';
+
+// import components ##############################################
+import Navigation from './components/Navigation';
+
 // import ReactNative from 'react-native';
 
-import {
-  StyleSheet,
-  Image,
-  ImageBackground,
-  Text,
-  View,
-  TouchableHighlight,
-   } from 'react-native';
+// redux configuration ############################################
+import { Provider, connect } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk';
+import reducers from './reducers';
 
+const store = createStore(reducers, applyMiddleware(reduxThunk));
 
-export default TabNavigator({
-  Home: {
-      screen: Home,
-    },
-  SignUp: {
-    screen: SignUp,
-  },
-  Photo: {
-    screen: Photo,
-  },
-  },
-
-  {
-    tabBarPosition: 'bottom',
-    animationEnabled: true,
-    tabBarOptions: {
-      activeTintColor: '#666',
-    },
+export default class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store} >
+        <Navigation />
+      </Provider>
+    )
   }
-);
+}

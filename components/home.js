@@ -1,7 +1,10 @@
 import React from 'react';
 import {Image, View, Text, TouchableHighlight, StyleSheet}  from 'react-native'
+import { connect } from 'react-redux';
 
 const Insert = (props)=> {
+
+	console.log(this.props);
 	return(
 
 	<View style={styles.container}>
@@ -16,12 +19,18 @@ const Insert = (props)=> {
 
 };
 
-export default Insert
+function mapStateToProps(state, props) {
+	return {
+		isLoggedIn: state.users.isLoggedIn,
+	};
+}
+
+export default connect(mapStateToProps, { })(Insert);
 
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
     backgroundColor: '#fff',
   },
 
