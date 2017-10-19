@@ -1,10 +1,7 @@
 import React from 'react';
-import { TabNavigator, Screen } from 'react-navigation';
 
 // import components ##############################################
 import Navigation from './components/Navigation';
-
-// import ReactNative from 'react-native';
 
 // redux configuration ############################################
 import { Provider, connect } from 'react-redux';
