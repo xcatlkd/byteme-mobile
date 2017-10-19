@@ -93,6 +93,7 @@ class Photo extends Component {
 function mapStateToProps(state, props) {
 	return {
 		isLoggedIn: state.users.isLoggedIn,
+		images: state.images.images,
 	};
 }
 

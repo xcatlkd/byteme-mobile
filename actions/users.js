@@ -1,10 +1,9 @@
 import API from '../util/api';
 
 export function signup(user) {
-	console.log("actions/users   signup();  user: ", user);
 	return (dispatch) => {
 		dispatch({
-			type: "SIGNUP_PENDING",
+			type: "AUTH_PENDING",
 		})
 		API.post("/user/signup", {
 			args: {
@@ -14,7 +13,6 @@ export function signup(user) {
 		})
 		.then((res) => {
 			if (res) {
-				console.log("action/users    API.post/user/signup   (res): ", res);
 				dispatch({
 					type: "AUTH_SUCCESS",
 					username: res.username,
@@ -37,4 +35,10 @@ export function signup(user) {
 			})
 		})
 	}
+}
+
+export function login(user) {
+	return (dispatch) => {
+
+	}	
 }

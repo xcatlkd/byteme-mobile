@@ -2,6 +2,7 @@ const INITIAL_STATE = {
 	isLoggedIn: false,
 	isLoading: false,
 	user: {},
+	location: null,
 	error: null,
 }
 
