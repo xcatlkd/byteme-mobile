@@ -1,5 +1,5 @@
 export default {
-	BASE_PATH: "/api",
+	BASE_PATH: "https://desolate-anchorage-50545.herokuapp.com/api",
 
 	/**
 	 * Fires a request at the API
