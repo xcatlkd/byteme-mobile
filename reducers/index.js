@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 
 import users from './users';
-import data from './data';
+import images from './images';
+import application from './application';
 
 import { routerReducer } from 'react-router-redux';
 
 
-export default combineReducers({ users, data, routing: routerReducer });
+export default combineReducers({ users, images, application, routing: routerReducer });

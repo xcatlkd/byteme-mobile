@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Image, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
 import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body, Thumbnail, Button, Icon } from 'native-base';
-// import Photos from '../json/test.json';
+import { getPhotos } from '../actions/images';
 
 class Photo extends Component {
 	constructor (props) {
@@ -17,24 +17,30 @@ class Photo extends Component {
 		}
 	}
 
-	_fetchPhotos = () => {
-		return fetch("https://desolate-anchorage-50545.herokuapp.com/api/posts")
-		// .then((data) => data.JSON())
-		.then((data) => {
-			this.setState({
-				images: JSON.parse(data._bodyText),
-			});
-		})
-		.then(() => {
-			console.log("_fetch   state: ", this.state);
-		})
-		.catch((error) => {
-			console.error(error);
-		})
-	}
+	// _fetchPhotos = () => {
+	// 	return fetch("https://desolate-anchorage-50545.herokuapp.com/api/posts")
+	// 	// .then((data) => data.JSON())
+	// 	.then((data) => {
+	// 		this.setState({
+	// 			images: JSON.parse(data._bodyText),
+	// 		});
+	// 	})
+	// 	.then(() => {
+	// 		console.log("_fetch   state: ", this.state);
+	// 	})
+	// 	.catch((error) => {
+	// 		console.error(error);
+	// 	})
+	// }
 
 	componentDidMount() {
-		this._fetchPhotos();
+		this.props.getPhotos()
+		console.log(this.props);
+		// .then(() => {
+		// 	setState({
+		// 		images: this.props.images,
+		// 	})
+		// })
 	}
 	render() {
 		const { images } = this.state;
@@ -97,7 +103,7 @@ function mapStateToProps(state, props) {
 	};
 }
 
-export default connect(mapStateToProps, { })(Photo);
+export default connect(mapStateToProps, { getPhotos })(Photo);
 
 const styles = StyleSheet.create({
   container: {

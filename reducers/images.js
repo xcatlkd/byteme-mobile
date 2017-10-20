@@ -17,6 +17,7 @@ function imagesReducer(state = INITIAL_STATE, action) {
 			return {
 				...state,
 				imagesLoading: false,
+				images: action.images,
 			}
 		case "IMAGE_LOAD_FAILURE":
 			return {

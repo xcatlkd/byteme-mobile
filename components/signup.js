@@ -35,7 +35,7 @@ class SignUp extends React.Component {
 		event.preventDefault();
 		console.log("handleSubmit; signup:   this.props: ", this.props)
 		this.props.signup(this.state);
-		
+
 	}
 
 
@@ -75,6 +75,7 @@ function mapStateToProps(state, props) {
 	return {
 		isLoggedIn: state.users.isLoggedIn,
 		error: state.users.error,
+		// images: state.images.images,
 	};
 }
 
