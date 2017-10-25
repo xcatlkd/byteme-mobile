@@ -12,10 +12,10 @@ class Photo extends Component {
 				title: "Sami!",
 				description: "Null",
 				id: "https://s3.us-east-2.amazonaws.com/bytemeimagestorage/1505352183872",
-
 			}],
 		}
 	}
+
 
 	// _fetchPhotos = () => {
 	// 	return fetch("https://desolate-anchorage-50545.herokuapp.com/api/posts")
@@ -34,34 +34,12 @@ class Photo extends Component {
 	// }
 
 	componentDidMount() {
-		this.props.getPhotos()
 		console.log(this.props);
-		// .then(() => {
-		// 	setState({
-		// 		images: this.props.images,
-		// 	})
-		// })
+		this.props.getPhotos();
 	}
-  componentDidMount() {
-    return fetch('https://desolate-anchorage-50545.herokuapp.com/api/posts')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        this.setState({
-          isLoading: false,
-          dataSource: ds.cloneWithRows(responseJson.movies),
-        }, function() {
-          // do something with new state
-        });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-
+ 
 	render() {
-		const { images } = this.state;
+		let images = this.props.images ? this.props.images : this.state.images;
 		const filePath = "https://s3.us-east-2.amazonaws.com/bytemeimagestorage/"
 		return (
 			<Container>
@@ -114,10 +92,10 @@ class Photo extends Component {
 	}
 };
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
 	return {
 		isLoggedIn: state.users.isLoggedIn,
-		images: state.images.images,
+		images: state.images,
 	};
 }
 

@@ -1,18 +1,19 @@
 import API from '../util/api';
+const basePath = "https://desolate-anchorage-50545.herokuapp.com/api";
 
 export function getPhotos() {
 	return (dispatch) => {
 		dispatch({
 			type: "IMAGE_LOAD_PENDING",
 		})
-		API.post("/posts")
-		.then((res) => res.JSON())
+		return fetch(basePath + "/posts")
+		// .then((data) => data.JSON())
 		.then((res) => {
 			if (res) {
-				console.log("actions/images  getPhotos()   res: ", res);
+				console.log("actions/images  getPhotos()   JSON.parse(res._bodyText): ", JSON.parse(res._bodyText));
 				dispatch({
 					type: "IMAGE_LOAD_SUCCESS",
-					images: res,
+					images: JSON.parse(res._bodyText),
 				})
 			}
 			else {

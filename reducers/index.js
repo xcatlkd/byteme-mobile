@@ -7,4 +7,4 @@ import application from './application';
 import { routerReducer } from 'react-router-redux';
 
 
-export default combineReducers({ users, images, application, routing: routerReducer });
+export default combineReducers({ users, images, application });
