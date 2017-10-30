@@ -1,5 +1,9 @@
 const INITIAL_STATE = {
-	images: [],
+	images: [{
+		title: "Sami!",
+		description: "Null",
+		id: "https://s3.us-east-2.amazonaws.com/bytemeimagestorage/1505352183872",
+	}],
 	leftImages: [],
 	rightImages: [],
 	error: null,
@@ -38,3 +42,4 @@ function imagesReducer(state = INITIAL_STATE, action) {
 			return state;
 	}
 }
+export default imagesReducer;

@@ -31,15 +31,14 @@ class Home extends React.Component {
 	}
 
 		return(
-			<Container style={styles.container} >
+			<Container style={styles.container}>
 				<View style={styles.container}>
-					<Text style={styles.titleText}>Welcome to Byte Me! A Food App to find tasty dishes
-					in your area! Let's get started.....</Text>
-					<Container style={styles.container} >
+					<Text style={styles.titleText}>You made it!!!</Text>
+					<Container style={styles.container}>
 						<Button style={styles.authButton} onPress={this._handleSubmit}><Text>{AuthButtonText}</Text></Button>
-					</Container >
-				</View>
-			</Container >
+					</ Container>
+				</ View>
+			</ Container>
 		)
 	}
 

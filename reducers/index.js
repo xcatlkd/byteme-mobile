@@ -8,4 +8,4 @@ import { nav, auth } from './nav';
 import { routerReducer } from 'react-router-redux';
 
 
-export default combineReducers({ users, images, application, nav });
+export default combineReducers({ users, images, application, nav, auth });

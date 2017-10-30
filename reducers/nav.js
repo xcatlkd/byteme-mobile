@@ -14,7 +14,7 @@ const initialNavState = AppNavigator.router.getStateForAction(secondAction, temp
 export function nav( state = initialNavState, action ) {
 	let nextState;
 	switch(action.type) {
-		case "LOGIN":
+		case "AUTH_SUCCESS":
 			nextState = AppNavigator.router.getStateForAction(
 				NavigationActions.back(),
 				state
@@ -23,6 +23,18 @@ export function nav( state = initialNavState, action ) {
 		case "LOGOUT":
 			nextState = AppNavigator.router.getStateForAction(
 				NavigationActions.navigate({ routeName: 'Landing' }),
+				state,
+			);
+			break;
+		case "PROFILE":
+			nextState = AppNavigator.router.getStateForAction(
+				NavigationActions.navigate({ routeName: 'Profile' }),
+				state,
+			);
+			break;
+		case "PHOTOS":
+			nextState = AppNavigator.router.getStateForAction(
+				NavigationActions.navigate({ routeName: 'Photos' }),
 				state,
 			);
 			break;
@@ -38,7 +50,7 @@ const initialAuthState = { isLoggedIn: false };
 
 export function auth(state = initialAuthState, action) {
 	switch(action.type) {
-		case "LOGIN":
+		case "AUTH_SUCCESS":
 			return {
 				...state,
 				isLoggedIn: true,

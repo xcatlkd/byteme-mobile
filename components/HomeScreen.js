@@ -6,11 +6,19 @@ import {
 } from 'native-base';
 import { connect } from 'react-redux';
 import { getPhotos } from '../actions/images';
+import { photos } from "../actions/nav";
 
 class Home extends React.Component {
 	
-	_handleSubmit(event) {
+	_handleSubmit = (event) => {
+		// if (!this.props.isLoggedIn) {
 
+		// }
+		if (this.props.isLoggedIn) {
+			event.preventDefault();
+			console.log(this.props);
+			this.props.photos();
+		}
 	}
 
 	componentDidMount() {
@@ -53,7 +61,7 @@ function mapStateToProps(state, props) {
 	};
 }
 
-export default connect(mapStateToProps, { getPhotos })(Home);
+export default connect(mapStateToProps, { getPhotos, photos })(Home);
 
 
 const styles = StyleSheet.create({
