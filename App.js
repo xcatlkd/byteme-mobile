@@ -2,6 +2,7 @@ import React from 'react';
 
 // import components ##############################################
 import Navigation from './components/Navigation';
+import Home from './components/home';
 
 // redux configuration ############################################
 import { Provider, connect } from 'react-redux';

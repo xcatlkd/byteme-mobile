@@ -75,7 +75,6 @@ function mapStateToProps(state, props) {
 	return {
 		isLoggedIn: state.users.isLoggedIn,
 		error: state.users.error,
-		images: state.images.images,
 	};
 }
 
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
 
 	button: {
 		marginLeft: 150,
-
+		paddingBottom: 40,
 	},
 
 	error: {
