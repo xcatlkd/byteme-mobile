@@ -1,9 +1,5 @@
 const INITIAL_STATE = {
-	images: [{
-		title: "Sami!",
-		description: "Null",
-		id: "https://s3.us-east-2.amazonaws.com/bytemeimagestorage/1505352183872",
-	}],
+	images: [],
 	leftImages: [],
 	rightImages: [],
 	error: null,
