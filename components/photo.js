@@ -16,22 +16,14 @@ class Photo extends Component {
 		}
 	}
 
+	_hendleSwipedLeft = (index) => {
 
-	// _fetchPhotos = () => {
-	// 	return fetch("https://desolate-anchorage-50545.herokuapp.com/api/posts")
-	// 	// .then((data) => data.JSON())
-	// 	.then((data) => {
-	// 		this.setState({
-	// 			images: JSON.parse(data._bodyText),
-	// 		});
-	// 	})
-	// 	.then(() => {
-	// 		console.log("_fetch   state: ", this.state);
-	// 	})
-	// 	.catch((error) => {
-	// 		console.error(error);
-	// 	})
-	// }
+	}
+
+	_handleSwipedRight = (index) => {
+
+	}
+
 
 	componentDidMount() {
 		console.log(this.props);
@@ -75,7 +67,10 @@ class Photo extends Component {
 								</Card>
 							);
 						}}
-					/>
+						onSwipedLeft={this._handleSwipedLeft}
+						onSwipedRight={this._handleSwipedRight}
+
+					/> {/* This closes the deckswiper component */}
 	 			</View>
 					{/* <View style={{ flexDirection: "row", flex: 1, position: "absolute", bottom: 50, left: 0, right: 0, justifyContent: 'space-between', padding: 15 }}>
         <Button iconLeft onPress={() => this._deckSwiper._root.swipeLeft()}>
