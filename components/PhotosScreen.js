@@ -25,10 +25,11 @@ class Photo extends Component {
 	}
 
 
-	componentDidMount() {
-		console.log(this.props);
-		this.props.getPhotos();
-	}
+	// componentDidMount() {
+	// 	this.setState({
+	// 		images: this.props.images,
+	// 	})
+	// }
  
 	render() {
 		let images = this.props.images ? this.props.images : this.state.images;
@@ -90,7 +91,7 @@ class Photo extends Component {
 function mapStateToProps(state) {
 	return {
 		isLoggedIn: state.users.isLoggedIn,
-		images: state.images,
+		images: state.images.images,
 	};
 }
 
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
 		marginTop: 150,
-    backgroundColor: '#fff',
+    backgroundColor: '#f0f8ff',
     alignItems: 'center',
     justifyContent: 'center',
 
