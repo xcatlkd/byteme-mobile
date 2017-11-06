@@ -15,36 +15,18 @@ class Photo extends Component {
 			}],
 		}
 	}
-
-
-	// _fetchPhotos = () => {
-	// 	return fetch("https://desolate-anchorage-50545.herokuapp.com/api/posts")
-	// 	// .then((data) => data.JSON())
-	// 	.then((data) => {
-	// 		this.setState({
-	// 			images: JSON.parse(data._bodyText),
-	// 		});
-	// 	})
-	// 	.then(() => {
-	// 		console.log("_fetch   state: ", this.state);
-	// 	})
-	// 	.catch((error) => {
-	// 		console.error(error);
-	// 	})
-	// }
-
-	// componentDidMount() {
-	// 	this.setState({
-	// 		images: this.props.images,
-	// 	})
-	// }
+	_handleSwipeLeft = (index) => {
+		console.log("swiped left; index: ", index);
+	}
+	_handleSwipeRight = (index) => {
+		console.log("swiped Right; index: ", index);
+	}
  
 	render() {
 		let images = this.props.images ? this.props.images : this.state.images;
 		const filePath = "https://s3.us-east-2.amazonaws.com/bytemeimagestorage/"
 		return (
 			<Container>
-				{/* <Header /> */}
 				<View style={styles.photoContainer}>
 					<DeckSwiper
 						ref={(c) => this._deckSwiper = c }
@@ -76,18 +58,10 @@ class Photo extends Component {
 								</Card>
 							);
 						}}
+						onSwipeLeft={(index) => this._handleSwipeLeft(index)}
+						onSwipeRight={(index) => this._handleSwipeRight(index)}
 					/>
 	 			</View>
-					{/* <View style={{ flexDirection: "row", flex: 1, position: "absolute", bottom: 50, left: 0, right: 0, justifyContent: 'space-between', padding: 15 }}>
-        <Button iconLeft onPress={() => this._deckSwiper._root.swipeLeft()}>
-          <Icon name="arrow-back" />
-          <Text>Swipe Left</Text>
-        </Button>
-        <Button iconRight onPress={() => this._deckSwiper._root.swipeRight()}>
-          <Icon name="arrow-forward" />
-          <Text>Swipe Right</Text>
-        </Button>
-      </View> */}
 	 		</Container>
 		)
 	}
