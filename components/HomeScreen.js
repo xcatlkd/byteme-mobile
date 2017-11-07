@@ -57,7 +57,7 @@ class Home extends React.Component {
 function mapStateToProps(state, props) {
 	return {
 		isLoggedIn: state.users.isLoggedIn,
-		// imagesLoaded: state.application.imagesLoaded,
+		imagesLoaded: state.application.imagesLoaded,
 	};
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Image, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
 import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body, Thumbnail, Button, Icon } from 'native-base';
-import { getPhotos } from '../actions/images';
+import { getPhotos, leftSwipe, rightSwipe } from '../actions/images';
 
 class Photo extends Component {
 	constructor (props) {
@@ -16,10 +16,10 @@ class Photo extends Component {
 		}
 	}
 	_handleSwipeLeft = (index) => {
-		console.log("swiped left; index: ", index);
+		this.props.leftSwipe(index);
 	}
 	_handleSwipeRight = (index) => {
-		console.log("swiped Right; index: ", index);
+		this.props.rightSwipe(index);
 	}
  
 	render() {
@@ -71,10 +71,12 @@ function mapStateToProps(state) {
 	return {
 		isLoggedIn: state.users.isLoggedIn,
 		images: state.images.images,
+		leftImages: state.images.leftImages,
+		rightImages: state.images.rightImages,
 	};
 }
 
-export default connect(mapStateToProps, { getPhotos })(Photo);
+export default connect(mapStateToProps, { getPhotos, leftSwipe, rightSwipe })(Photo);
 
 const styles = StyleSheet.create({
   container: {

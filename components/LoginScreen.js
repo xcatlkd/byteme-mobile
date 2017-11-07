@@ -19,7 +19,7 @@ import { FormLabel,
 				 FormInput,
 				 FormValidationMessage } from 'react-native-elements';
 
-import { signup } from '../actions/users';
+import { signup, login } from '../actions/users';
 
 class SignUp extends React.Component {
 	constructor(props) {
@@ -34,7 +34,7 @@ class SignUp extends React.Component {
 	_handleSubmit = (event) => {
 		event.preventDefault();
 		console.log("handleSubmit; signup:   this.props: ", this.props)
-		this.props.signup(this.state);
+		this.props.login(this.state);
 
 	}
 
@@ -75,11 +75,10 @@ function mapStateToProps(state, props) {
 	return {
 		isLoggedIn: state.users.isLoggedIn,
 		error: state.users.error,
-		// images: state.images.images,
 	};
 }
 
-export default connect(mapStateToProps, { signup })(SignUp);
+export default connect(mapStateToProps, { signup, login })(SignUp);
 
 const styles = StyleSheet.create({
 	container: {
