@@ -6,14 +6,14 @@ import {
 } from 'native-base';
 import { connect } from 'react-redux';
 import { getPhotos } from '../actions/images';
-import { photos } from "../actions/nav";
+import { photos, login, signup } from "../actions/nav";
 
 class Home extends React.Component {
 	
 	_handleSubmit = (event) => {
-		// if (!this.props.isLoggedIn) {
+		if (!this.props.isLoggedIn) {
 
-		// }
+		}
 		if (this.props.isLoggedIn) {
 			event.preventDefault();
 			console.log(this.props);
@@ -57,6 +57,7 @@ class Home extends React.Component {
 function mapStateToProps(state, props) {
 	return {
 		isLoggedIn: state.users.isLoggedIn,
+		isLoading: state.application.isLoading,
 		imagesLoaded: state.application.imagesLoaded,
 	};
 }

@@ -33,13 +33,12 @@ class SignUp extends React.Component {
 
 	_handleSubmit = (event) => {
 		event.preventDefault();
-		console.log("handleSubmit; signup:   this.props: ", this.props)
 		this.props.login(this.state);
-
 	}
 
 
 	render() {
+		console.log("handleSubmit; signup:   this.props: ", this.props)
 		return(
 			<Container style={styles.container}>
 				<KeyboardAvoidingView style={styles.container} behavior="padding">

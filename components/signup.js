@@ -27,6 +27,7 @@ class SignUp extends React.Component {
 			this.state = {
 				username: "",
 				password: "",
+				confrimPass: "",
 			};
 		}
 	}
@@ -54,8 +55,16 @@ class SignUp extends React.Component {
 					<FormLabel>
 						Password:
 					</FormLabel>
-					<FormInput style={styles.input} onChangeText={(password) => this.setState({password})}
+					<FormInput type={password} style={styles.input} onChangeText={(password) => this.setState({password})}
 					value={this.state.password}/>
+					<FormValidationMessage style={styles.error}>
+						{'This field is required'}
+					</FormValidationMessage>
+					<FormLabel>
+						Confirm your password:
+					</FormLabel>
+					<FormInput type={password} style={styles.input} onChangeText={(confrimPass) => this.setState({confirmPass})}
+					value={this.state.confirmPass}/>
 					<FormValidationMessage style={styles.error}>
 						{'This field is required'}
 					</FormValidationMessage>

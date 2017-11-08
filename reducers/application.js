@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
 	isLoading: false,
+	imagesLoaded: false,
 
 }
 
@@ -10,10 +11,10 @@ function applicationReducer(state = INITIAL_STATE, action) {
 				...state,
 				isLoading: true,
 			}
-		case "LOADED":
+		case "IMAGE_LOAD_SUCCESS":
 			return {
 				...state,
-				isLoading: false,
+				imagesLoaded: false,
 			}
 		default:
 			return state;
