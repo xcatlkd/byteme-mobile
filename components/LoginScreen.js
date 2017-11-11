@@ -53,7 +53,7 @@ class SignUp extends React.Component {
 					<FormLabel>
 						Password:
 					</FormLabel>
-					<FormInput style={styles.input} onChangeText={(password) => this.setState({password})}
+					<FormInput secureTextEntry={true} style={styles.input} onChangeText={(password) => this.setState({password})}
 					value={this.state.password}/>
 					<FormValidationMessage style={styles.error}>
 						{'This field is required'}

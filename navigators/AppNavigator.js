@@ -5,6 +5,7 @@ import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
 //##### Import components ##################################################
 import LoginScreen from '../components/LoginScreen';
+import SignupScreen from '../components/SignupScreen';
 import LandingScreen from '../components/HomeScreen';
 import ProfileScreen from '../components/ProfileScreen';
 import PhotosScreen from '../components/PhotosScreen';
@@ -13,6 +14,7 @@ import PhotosScreen from '../components/PhotosScreen';
 
 export const AppNavigator = StackNavigator({
 	Login: { screen: LoginScreen },
+	Signup: { screen: SignupScreen },
 	Landing: { screen: LandingScreen },
 	Profile: { screen: ProfileScreen },
 	Photos: { screen: PhotosScreen },

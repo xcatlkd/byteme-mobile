@@ -14,7 +14,7 @@ function applicationReducer(state = INITIAL_STATE, action) {
 		case "IMAGE_LOAD_SUCCESS":
 			return {
 				...state,
-				imagesLoaded: false,
+				imagesLoaded: true,
 			}
 		default:
 			return state;

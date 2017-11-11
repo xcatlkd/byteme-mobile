@@ -5,20 +5,14 @@ import {
 	Container,
 } from 'native-base';
 import { connect } from 'react-redux';
+import AuthButton from './AuthButton';
 import { getPhotos } from '../actions/images';
 import { photos, login, signup } from "../actions/nav";
 
 class Home extends React.Component {
-	
-	_handleSubmit = (event) => {
-		if (!this.props.isLoggedIn) {
-
-		}
-		if (this.props.isLoggedIn) {
-			event.preventDefault();
-			console.log(this.props);
-			this.props.photos();
-		}
+	_handleSignup = (event) => {
+		event.preventDefault();
+		this.props.signup();
 	}
 
 	componentDidMount() {
@@ -26,28 +20,19 @@ class Home extends React.Component {
 	}
 
 	render() {
-	let AuthButton;
-	let AuthButtonText;
-
-	if (!this.props.isLoggedIn) {
-		AuthButton = "Signup";
-		AuthButtonText = "Login or Signup!";
-	}
-	if (this.props.isLoggedIn) {
-		AuthButton = "UserPage";
-		AuthButtonText = "Check out dishes close to you now!";
-	}
-
+		console.log("Home  render;  getPhotos(): ", this.props.imagesLoaded);
 		return(
 			<Container style={styles.container} >
-				<View style={styles.container}>
+				<View style={styles.centerView} >
+					<Image style={styles.backgroundImage} source={require('../assets/images/BrusselsSprouts01.jpg')} />
 					<Text style={styles.titleText}>Welcome to Byte Me! A Food App to find tasty dishes
 					in your area! Let's get started.....</Text>
-					<Container style={styles.container} >
-						<Button style={styles.authButton} onPress={this._handleSubmit}><Text>{AuthButtonText}</Text></Button>
-					</Container >
+					<Container style={styles.conatiner}>
+						<AuthButton />
+						<TouchableHighlight onPress={this._handleSignup}><Text>No account yet?! Signup here</Text></TouchableHighlight>
+					</Container>
 				</View>
-			</Container >
+			</Container>
 		)
 	}
 
@@ -62,7 +47,7 @@ function mapStateToProps(state, props) {
 	};
 }
 
-export default connect(mapStateToProps, { getPhotos, photos })(Home);
+export default connect(mapStateToProps, { getPhotos, photos, signup })(Home);
 
 
 const styles = StyleSheet.create({
@@ -71,17 +56,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0F8FF',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingLeft: 25,
-    paddingRight: 25,
+    // paddingLeft: 25,
+    // paddingRight: 25,
   },
   titleText: {
-  	flex: 2,
-  	paddingTop: 250,
   	textAlign: 'center',
   },
-  authButton: {
+  centerView: {
+  	alignItems: 'center',
+  },
+  backgroundImage: {
   	flex: 1,
   	justifyContent: 'center',
+  	resizeMode: 'cover',
   },
-
 });
