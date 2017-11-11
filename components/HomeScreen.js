@@ -10,10 +10,6 @@ import { getPhotos } from '../actions/images';
 import { photos, login, signup } from "../actions/nav";
 
 class Home extends React.Component {
-	_handleSignup = (event) => {
-		event.preventDefault();
-		this.props.signup();
-	}
 
 	componentDidMount() {
 		this.props.getPhotos();
@@ -29,7 +25,6 @@ class Home extends React.Component {
 					in your area! Let's get started.....</Text>
 					<Container style={styles.conatiner}>
 						<AuthButton />
-						<TouchableHighlight onPress={this._handleSignup}><Text>No account yet?! Signup here</Text></TouchableHighlight>
 					</Container>
 				</View>
 			</Container>

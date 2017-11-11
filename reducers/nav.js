@@ -28,7 +28,7 @@ export function nav( state = initialNavState, action ) {
 			break;
 		case "AUTH_SUCCESS":
 			nextState = AppNavigator.router.getStateForAction(
-				NavigationActions.navigate({ routeName: 'Photos'}),
+				NavigationActions.navigate({ routeName: 'Landing'}),
 				state
 			);
 			break;

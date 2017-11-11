@@ -38,7 +38,7 @@ class SignUp extends React.Component {
 
 
 	render() {
-		console.log("handleSubmit; signup:   this.props: ", this.props)
+		console.log("handleSubmit; login:   this.props: ", this.props)
 		return(
 			<Container style={styles.container}>
 				<KeyboardAvoidingView style={styles.container} behavior="padding">

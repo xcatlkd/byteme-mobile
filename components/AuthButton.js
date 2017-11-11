@@ -19,10 +19,10 @@ class AuthButton extends React.Component {
 			this.props.photos();
 		}
 	}
-	// _handleSignup = (event) => {
-	// 	event.preventDefault();
-	// 	this.props.signup();
-	// }
+	_handleSignup = (event) => {
+		event.preventDefault();
+		this.props.signup();
+	}
 
 	render() {
 		let AuthState;
@@ -31,6 +31,7 @@ class AuthButton extends React.Component {
 			content = (
 				<View style={styles.authButton}>
 					<Button onPress={this._handleSubmit}><Text>Login</Text></Button>
+					<TouchableHighlight onPress={this._handleSignup}><Text>No account yet?! Signup here</Text></TouchableHighlight>
 				</View>
 			)
 		}
@@ -55,7 +56,7 @@ class AuthButton extends React.Component {
 }
 const styles = StyleSheet.create({
   authButton: {
-  	alignSelf: 'center',
+  	alignItems: 'center',
   },
 });
 
