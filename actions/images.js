@@ -7,10 +7,8 @@ export function getPhotos() {
 			type: "IMAGE_LOAD_PENDING",
 		})
 		return fetch(basePath + "/posts")
-		// .then((data) => data.JSON())
 		.then((res) => {
 			if (res) {
-				console.log("actions/images  getPhotos()   JSON.parse(res._bodyText): ", JSON.parse(res._bodyText));
 				dispatch({
 					type: "IMAGE_LOAD_SUCCESS",
 					images: JSON.parse(res._bodyText),
@@ -33,18 +31,40 @@ export function getPhotos() {
 	}
 }
 
-	// _fetchPhotos = () => {
-	// 	return fetch("https://desolate-anchorage-50545.herokuapp.com/api/posts")
-	// 	// .then((data) => data.JSON())
-	// 	.then((data) => {
-	// 		this.setState({
-	// 			images: JSON.parse(data._bodyText),
-	// 		});
+export function leftSwipe(image) {
+	return (dispatch) => {
+		dispatch({
+			type: "LEFT_SWIPE",
+			targetImage: image,
+		})
+	// 	return fetch(basePath + "/")
+	// 	.then((res) => {
+
 	// 	})
-	// 	.then(() => {
-	// 		console.log("_fetch   state: ", this.state);
+	// }	.catch((error) => {
+	// 	console.error(error);
+	// 	dispatch({
+	// 		type: "",
 	// 	})
-	// 	.catch((error) => {
-	// 		console.error(error);
+	// })
+	}
+}
+
+export function rightSwipe(image) {
+	return (dispatch) => {
+		dispatch({
+			type: "RIGHT_SWIPE",
+			targetImage: image,
+		})
+	// 	return fetch(basePath + "/")
+	// 	.then((res) => {
+
 	// 	})
-	// }
+	// }	.catch((error) => {
+	// 	console.error(error);
+	// 	dispatch({
+	// 		type: "",
+	// 	})
+	// })
+	}
+}

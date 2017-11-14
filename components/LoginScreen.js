@@ -19,7 +19,7 @@ import { FormLabel,
 				 FormInput,
 				 FormValidationMessage } from 'react-native-elements';
 
-import { signup } from '../actions/users';
+import { signup, login } from '../actions/users';
 
 class SignUp extends React.Component {
 	constructor(props) {
@@ -33,13 +33,12 @@ class SignUp extends React.Component {
 
 	_handleSubmit = (event) => {
 		event.preventDefault();
-		console.log("handleSubmit; signup:   this.props: ", this.props)
-		this.props.signup(this.state);
-
+		this.props.login(this.state);
 	}
 
 
 	render() {
+		console.log("handleSubmit; login:   this.props: ", this.props)
 		return(
 			<Container style={styles.container}>
 				<KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -54,7 +53,7 @@ class SignUp extends React.Component {
 					<FormLabel>
 						Password:
 					</FormLabel>
-					<FormInput style={styles.input} onChangeText={(password) => this.setState({password})}
+					<FormInput secureTextEntry={true} style={styles.input} onChangeText={(password) => this.setState({password})}
 					value={this.state.password}/>
 					<FormValidationMessage style={styles.error}>
 						{'This field is required'}
@@ -75,11 +74,10 @@ function mapStateToProps(state, props) {
 	return {
 		isLoggedIn: state.users.isLoggedIn,
 		error: state.users.error,
-		// images: state.images.images,
 	};
 }
 
-export default connect(mapStateToProps, { signup })(SignUp);
+export default connect(mapStateToProps, { signup, login })(SignUp);
 
 const styles = StyleSheet.create({
 	container: {

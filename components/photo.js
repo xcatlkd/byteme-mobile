@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Image, Text, TouchableHighlight, StyleSheet, ScrollView }  from 'react-native'
 import { Container, Header, View, DeckSwiper, Card, CardItem, Left, Body, Thumbnail, Button, Icon } from 'native-base';
-import { getPhotos, leftSwipe, rightSwipe } from '../actions/images';
+import { getPhotos } from '../actions/images';
 
 class Photo extends Component {
 	constructor (props) {
@@ -16,52 +16,42 @@ class Photo extends Component {
 		}
 	}
 
-	_handleSwipeLeft = (index) => {
-		this.props.leftSwipe(index);
-	}
-	_handleSwipeRight = (index) => {
-		this.props.rightSwipe(index);
+	componentDidMount() {
+		console.log(this.props);
+		this.props.getPhotos();
 	}
  
 	render() {
 		let images = this.props.images ? this.props.images : this.state.images;
-		const filePath = "https://s3.us-east-2.amazonaws.com/bytemeimagestorage/"
+		const filePath = "https://s3.us-east-2.amazonaws.com/bytemeimagestorage/";
 		return (
 			<Container>
 				<View style={styles.photoContainer}>
 					<DeckSwiper
 						ref={(c) => this._deckSwiper = c }
 						dataSource={images}
-
-						renderItem={photo => {
+						renderItem={(photo) => {
 							return (
 								<Card style={{ elevation: 3 }}>
 									<CardItem>
 										<Left>
 											<Thumbnail source={{ uri: `${filePath}${photo.id}` }}/>
 											<Body>
-												<Text style={styles.title}>
-													{ photo.title }
-												</Text>
+												<Text style={styles.title}>{ photo.title }</Text>
 												<Text note={styles.note}>Byte Me</Text>
 											</Body>
 										</Left>
 									</CardItem>
 									<CardItem cardBody>
-										<Image style={{ height: 300, flex: 1 }} source={{ uri: `${filePath}${photo.id}` }} />
-
+										<Image style={{ height: 300, flex: 1 }} source={{ uri: `${filePath}${photo.id}` }}/>
 									</CardItem>
 									<CardItem>
-										<Text>
-											{ photo.title }
-										</Text>
+										<Text>{ photo.title }</Text>
 									</CardItem>
 								</Card>
 							);
 						}}
-						onSwipeLeft={(index) => this._handleSwipeLeft(index)}
-						onSwipeRight={(index) => this._handleSwipeRight(index)}
-					/> {/* This closes the deckswiper component */}
+					/>
 	 			</View>
 	 		</Container>
 		)
@@ -71,19 +61,17 @@ class Photo extends Component {
 function mapStateToProps(state) {
 	return {
 		isLoggedIn: state.users.isLoggedIn,
-		images: state.images.images,
-		leftImages: state.images.leftImages,
-		rightImages: state.images.rightImages,
+		images: state.images,
 	};
 }
 
-export default connect(mapStateToProps, { getPhotos, leftSwipe, rightSwipe })(Photo);
+export default connect(mapStateToProps, { getPhotos })(Photo);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
 		marginTop: 150,
-    backgroundColor: '#f0f8ff',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
 

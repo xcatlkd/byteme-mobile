@@ -7,16 +7,28 @@ import { AppNavigator } from '../navigators/AppNavigator';
 // define routing here #######################################3
 
 const firstAction = AppNavigator.router.getActionForPathAndParams('Landing');
-const tempNavState = AppNavigator.router.getStateForAction(firstAction);
-const secondAction = AppNavigator.router.getActionForPathAndParams('Login');
-const initialNavState = AppNavigator.router.getStateForAction(secondAction, tempNavState);
+const initialNavState = AppNavigator.router.getStateForAction(firstAction);
+// const secondAction = AppNavigator.router.getActionForPathAndParams('Login');
+// const initialNavState = AppNavigator.router.getStateForAction(secondAction, tempNavState);
 
 export function nav( state = initialNavState, action ) {
 	let nextState;
 	switch(action.type) {
+		case "LOGIN":
+			nextState = AppNavigator.router.getStateForAction(
+				NavigationActions.navigate({ routeName: 'Login' }),
+				state,
+			);
+			break;
+		case "SIGNUP":
+			nextState = AppNavigator.router.getStateForAction(
+				NavigationActions.navigate({ routeName: 'Signup'}),
+				state,
+			);
+			break;
 		case "AUTH_SUCCESS":
 			nextState = AppNavigator.router.getStateForAction(
-				NavigationActions.back(),
+				NavigationActions.navigate({ routeName: 'Landing'}),
 				state
 			);
 			break;

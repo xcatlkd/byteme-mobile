@@ -25,14 +25,15 @@ function imagesReducer(state = INITIAL_STATE, action) {
 				imagesLoading: false,
 				error: action.error,
 			}
-		case "SWIPE_LEFT":
+		case "LEFT_SWIPE":
 			return {
 				...state,
+				leftImages: [...state.leftImages, action.targetImage],
 			}
-		case "SWIPE_RIGHT":
+		case "RIGHT_SWIPE":
 			return {
 				...state,
-
+				rightImages: [...state.rightImages, action.targetImage],
 			}
 		default:
 			return state;
