@@ -61,7 +61,7 @@ class Photo extends Component {
 						}}
 						onSwipeLeft={(index) => this._handleSwipeLeft(index)}
 						onSwipeRight={(index) => this._handleSwipeRight(index)}
-					/> {/* This closes the deckswiper component */}
+					/>{/* This closes the deckswiper component */}
 	 			</View>
 	 		</Container>
 		)
