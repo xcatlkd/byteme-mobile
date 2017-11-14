@@ -38,7 +38,6 @@ class SignUp extends React.Component {
 
 
 	render() {
-		console.log("handleSubmit; login:   this.props: ", this.props)
 		return(
 			<Container style={styles.container}>
 				<KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -61,11 +60,6 @@ class SignUp extends React.Component {
 					<Button style={styles.button} onPress={this._handleSubmit}><Text>Sign Up</Text></Button>
 				</KeyboardAvoidingView>
 			</Container>
-
-		// <Image
-		// 	style={styles.logo}
-		// 	source={{uri: 'https://imgur.com/NL5irJA'}}
-		// />
 		)
 	}
 };
@@ -98,8 +92,9 @@ const styles = StyleSheet.create({
 	},
 
 	button: {
-		marginLeft: 150,
-		paddingBottom: 40,
+		marginBottom: 100,
+		flexDirection: 'column',
+		alignSelf: 'center',
 	},
 
 	error: {

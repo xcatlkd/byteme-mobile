@@ -34,7 +34,6 @@ class SignUp extends React.Component {
 
 	_handleSubmit = (event) => {
 		event.preventDefault();
-		console.log("handleSubmit; signup:   this.props: ", this.props)
 		this.props.signup(this.state);
 
 	}
@@ -108,12 +107,12 @@ const styles = StyleSheet.create({
 	},
 
 	button: {
-		marginLeft: 150,
-		paddingBottom: 40,
+		marginBottom: 100,
+		alignSelf: 'center',
 	},
 
 	error: {
-		marginBottom: 10,
+		// marginBottom: 10,
 	},
 
 	logo: {

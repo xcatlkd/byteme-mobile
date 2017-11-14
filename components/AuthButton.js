@@ -29,8 +29,8 @@ class AuthButton extends React.Component {
 		let content;
 		if (!this.props.isLoggedIn) {
 			content = (
-				<View style={styles.authButton}>
-					<Button onPress={this._handleSubmit}><Text>Login</Text></Button>
+				<View>
+					<Button style={styles.authButton} onPress={this._handleSubmit}><Text>Login</Text></Button>
 					<TouchableHighlight onPress={this._handleSignup}><Text>No account yet?! Signup here</Text></TouchableHighlight>
 				</View>
 			)
@@ -56,7 +56,8 @@ class AuthButton extends React.Component {
 }
 const styles = StyleSheet.create({
   authButton: {
-  	alignItems: 'center',
+  	flexDirection: 'column',
+  	alignSelf: 'center',
   },
 });
 
