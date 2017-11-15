@@ -34,13 +34,15 @@ class SignUp extends React.Component {
 
 	_handleSubmit = (event) => {
 		event.preventDefault();
-		console.log("handleSubmit; signup:   this.props: ", this.props)
-		this.props.signup(this.state);
-
+		if (this.state.confirmPass && this.state.confirmPass === this.state.password) {
+			this.props.signup(this.state);
+		}
 	}
 
 
 	render() {
+		let error = this.props.error ? this.props.error : null;
+
 		return(
 			<Container style={styles.container}>
 				<KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -50,32 +52,21 @@ class SignUp extends React.Component {
 					<FormInput style={styles.input} onChangeText={(username) => this.setState({username})}
 			    value={this.state.username}/>
 					<FormValidationMessage style={styles.error}>
-						{'This field is required'}
+						{error}
 					</FormValidationMessage>
 					<FormLabel>
 						Password:
 					</FormLabel>
 					<FormInput secureTextEntry={true} style={styles.input} onChangeText={(password) => this.setState({password})}
 					value={this.state.password}/>
-					<FormValidationMessage style={styles.error}>
-						{'This field is required'}
-					</FormValidationMessage>
 					<FormLabel>
 						Confirm your password:
 					</FormLabel>
-					<FormInput secureTextEntry={true} style={styles.input} onChangeText={(confrimPass) => this.setState({confirmPass})}
+					<FormInput secureTextEntry={true} style={styles.input} onChangeText={(confirmPass) => this.setState({confirmPass})}
 					value={this.state.confirmPass}/>
-					<FormValidationMessage style={styles.error}>
-						{'This field is required'}
-					</FormValidationMessage>
 					<Button style={styles.button} onPress={this._handleSubmit}><Text>Sign Up</Text></Button>
 				</KeyboardAvoidingView>
 			</Container>
-
-		// <Image
-		// 	style={styles.logo}
-		// 	source={{uri: 'https://imgur.com/NL5irJA'}}
-		// />
 		)
 	}
 };
@@ -108,12 +99,12 @@ const styles = StyleSheet.create({
 	},
 
 	button: {
-		marginLeft: 150,
-		paddingBottom: 40,
+		marginBottom: 100,
+		alignSelf: 'center',
 	},
 
 	error: {
-		marginBottom: 10,
+		// marginBottom: 10,
 	},
 
 	logo: {

@@ -9,10 +9,11 @@ export function signup(user) {
 			args: {
 				username: user.username,
 				password: user.password,
+				confirmPass: user.confirmPass,
 			},
 		})
 		.then((res) => {
-			if (res) {
+			if (res.username) {
 				dispatch({
 					type: "AUTH_SUCCESS",
 					username: res.username,
@@ -20,7 +21,6 @@ export function signup(user) {
 				})
 			}
 			else {
-				console.error(res.error);
 				dispatch({
 					type: "AUTH_FAILURE",
 					error: res.error,
@@ -49,7 +49,8 @@ export function login(user) {
 			},
 		})
 		.then((res) => {
-			if (res) {
+			console.log("actions/user/login;  res: ", res);
+			if (res.username) {
 				dispatch({
 					type: "AUTH_SUCCESS",
 					username: res.username,
@@ -57,7 +58,6 @@ export function login(user) {
 				})
 			}
 			else {
-				console.error(res.error);
 				dispatch({
 					type: "AUTH_FAILURE",
 					error: res.error,

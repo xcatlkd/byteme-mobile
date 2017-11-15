@@ -38,7 +38,8 @@ class SignUp extends React.Component {
 
 
 	render() {
-		console.log("handleSubmit; login:   this.props: ", this.props)
+		let error = this.props.error ? this.props.error : null;
+		
 		return(
 			<Container style={styles.container}>
 				<KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -48,24 +49,16 @@ class SignUp extends React.Component {
 					<FormInput style={styles.input} onChangeText={(username) => this.setState({username})}
 			    value={this.state.username}/>
 					<FormValidationMessage style={styles.error}>
-						{'This field is required'}
+						{error}
 					</FormValidationMessage>
 					<FormLabel>
 						Password:
 					</FormLabel>
 					<FormInput secureTextEntry={true} style={styles.input} onChangeText={(password) => this.setState({password})}
 					value={this.state.password}/>
-					<FormValidationMessage style={styles.error}>
-						{'This field is required'}
-					</FormValidationMessage>
 					<Button style={styles.button} onPress={this._handleSubmit}><Text>Sign Up</Text></Button>
 				</KeyboardAvoidingView>
 			</Container>
-
-		// <Image
-		// 	style={styles.logo}
-		// 	source={{uri: 'https://imgur.com/NL5irJA'}}
-		// />
 		)
 	}
 };
@@ -98,8 +91,9 @@ const styles = StyleSheet.create({
 	},
 
 	button: {
-		marginLeft: 150,
-		paddingBottom: 40,
+		marginBottom: 100,
+		flexDirection: 'column',
+		alignSelf: 'center',
 	},
 
 	error: {

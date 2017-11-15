@@ -23,8 +23,8 @@ class Home extends React.Component {
 					<Image style={styles.backgroundImage} source={require('../assets/images/BrusselsSprouts01.jpg')} />
 					<Text style={styles.titleText}>Welcome to Byte Me! A Food App to find tasty dishes
 					in your area! Let's get started.....</Text>
-					<Container style={styles.conatiner}>
-						<AuthButton />
+					<Container>
+						<AuthButton style={styles.centerView}/>
 					</Container>
 				</View>
 			</Container>
