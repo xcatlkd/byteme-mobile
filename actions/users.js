@@ -9,6 +9,7 @@ export function signup(user) {
 			args: {
 				username: user.username,
 				password: user.password,
+				confirmPass: user.confirmPass,
 			},
 		})
 		.then((res) => {
@@ -20,7 +21,6 @@ export function signup(user) {
 				})
 			}
 			else {
-				console.error(res.error);
 				dispatch({
 					type: "AUTH_FAILURE",
 					error: res.error,
@@ -58,7 +58,6 @@ export function login(user) {
 				})
 			}
 			else {
-				console.error(res.error);
 				dispatch({
 					type: "AUTH_FAILURE",
 					error: res.error,
