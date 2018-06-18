@@ -3,8 +3,8 @@ import { TabNavigator, Screen } from 'react-navigation';
 
 // import components #######################################
 import Insert from './insert.js';
-import Home from './home.js';
-import SignUp from './signup.js';
+import Home from './HomeScreen.js';
+import SignUp from './SignupScreen.js';
 import Photo from './photo.js';
 
 import {
